@@ -31,7 +31,7 @@ steps:
     displayName: "Building CLI11"
     inputs:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
-      cmakeArgs: '--build ./cli11/BUILD'
+      cmakeArgs: '--build "./cli11/BUILD"'
 
 - task: CMake@1
     displayName: "Building CLI11 again"
