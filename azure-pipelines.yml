@@ -18,7 +18,7 @@ steps:
   - checkout: cli11
     persistCredentials : true
 
-  - powershell: 'dir'
+  - powershell: 'ls'
     displayName: "Check directories"
 
   - task: CMake@1
