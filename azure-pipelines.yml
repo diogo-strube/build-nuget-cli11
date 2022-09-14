@@ -18,6 +18,9 @@ steps:
   - checkout: cli11
     persistCredentials : true
 
+  - powershell: 'dir'
+    displayName: "Check directories"
+
   - task: CMake@1
     displayName: "Making CLI11"
     inputs:
