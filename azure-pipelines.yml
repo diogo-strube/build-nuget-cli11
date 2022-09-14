@@ -25,7 +25,7 @@ steps:
     displayName: "Making CLI11"
     inputs:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
-      cmakeArgs: '-DCMAKE_INSTALL_PREFIX="./INSTALL" -DCLI11_INSTALL=ON -DCLI11_SINGLE_FILE=ON -B "/cli11/BUILD" ./cli11' 
+      cmakeArgs: '-DCMAKE_INSTALL_PREFIX="./INSTALL" -DCLI11_INSTALL=ON -DCLI11_SINGLE_FILE=ON -B "./BUILD" ./cli11' 
       
   - task: CMake@1
     displayName: "Building CLI11"
