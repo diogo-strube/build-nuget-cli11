@@ -1,0 +1,19 @@
+resources:
+  repositories:
+    - repository: cli11
+      type: github
+      endpoint: gh
+      name: cliutils/cli11
+      ref: refs/tags/v2.2.0
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    persistCredentials : true
+  - checkout: cli11
+    persistCredentials : true
