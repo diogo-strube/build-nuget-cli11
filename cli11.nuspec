@@ -7,8 +7,9 @@
     <owners>University of Cincinnati</owners>
     <projectUrl>https://github.com/CLIUtils/CLI11</projectUrl>
     <description>CLI11 provides all the features you expect in a powerful command line parser, with a beautiful, minimal syntax and no dependencies beyond C++11. It is header only, and comes in a single file form for easy inclusion in projects. It is easy to use for small projects, but powerful enough for complex command line projects, and can be customized for frameworks.
-    
-    Built with Azure Pipeline https://github.com/diogo-strube/build-nuget-cli11
+    As of version 1.0, this library is available under a 3-Clause BSD license. See the link to the license for details.
+    CLI11 is a strong open source project authored by Henry Schreiner and owned by the University of Cincinnati.
+    This NuGet Pkg was built with Azure Pipeline https://github.com/diogo-strube/build-nuget-cli11.
     </description>
     <releaseNotes>New features include support for output of an empty vector, a summing option policy that can be applied more broadly, and an option to validate optional arguments to discriminate from positional arguments. A new validator to check for files on a default path is included to allow one or more default paths for configuration files or other file arguments. A number of bug fixes and code cleanup for various build configurations. Clean up of some error outputs and extension of existing capability to new types or situations.</releaseNotes>
     <licenseUrl>https://github.com/CLIUtils/CLI11/blob/main/LICENSE</licenseUrl>
@@ -16,7 +17,7 @@
     <icon>images\CLI11.png</icon>
     <title>CLI11: Command line parser for C++11</title>
     <summary>CLI11 is a command line parser for C++11 and beyond that provides a rich feature set with a simple and intuitive interface.</summary>
-    <tags>command line parser, C++, header only</tags>
+    <tags>cli, command line parser, C++, header-only</tags>
     <dependencies>
       <group targetFramework="native0.0" />
     </dependencies>
@@ -24,6 +25,7 @@
   <files>
     <file src="include\CLI11.hpp" target="\lib\native\include\cli11\CLI11.hpp" />
     <file src="cli11.targets" target="\build\native\cli11.targets" />
-    <file src="CLI11.png" target="images\CLI11.png" />
+    <file src="CLI11.png" target="images\" />
+    <file src="..\cli11\README.md" target="docs\" />
   </files>
 </package>
