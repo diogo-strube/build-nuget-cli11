@@ -17,3 +17,27 @@ steps:
     persistCredentials : true
   - checkout: cli11
     persistCredentials : true
+
+  - powershell: 'ls'
+    displayName: "Check directories"
+
+  - task: CMake@1
+    displayName: "Making CLI11"
+    inputs:
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
+      cmakeArgs: '-DCMAKE_INSTALL_PREFIX="./INSTALL" -DCLI11_INSTALL=ON -DCLI11_SINGLE_FILE=ON -B "./BUILD" ./cli11' 
+      
+  - task: CMake@1
+    displayName: "Building CLI11"
+    inputs:
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
+      cmakeArgs: '--build "./BUILD"'
+
+  - task: CMake@1
+    displayName: "Installing CLI11"
+    inputs:
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
+      cmakeArgs: '--install "./BUILD"'
+    
+  - powershell: 'ls'
+    displayName: "Check directories"
