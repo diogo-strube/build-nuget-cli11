@@ -14,9 +14,10 @@ pool:
 
 steps:
   - checkout: self
-    persistCredentials : true
+    displayName: "Cloning build-nuget-cli11"
+    path: $(Pipeline.Workspace)
   - checkout: cli11
-    persistCredentials : true
+    displayName: "Cloning cli11"
 
   - powershell: 'ls'
     displayName: "Check directories"
@@ -39,5 +40,10 @@ steps:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
       cmakeArgs: '--install "./BUILD"'
     
-  - powershell: 'ls'
-    displayName: "Check directories"
+  - task: NuGetCommand@2
+    displayName: "Packaging NuGet Pkg"
+    inputs:
+      command: 'pack'
+      packagesToPack: '.\cli11.nuspec'
+      packDestination: '$(System.DefaultWorkingDirectory)'
+      versioningScheme: 'off'
