@@ -22,7 +22,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="BUILD\INSTALL\include\CLI11.hpp" target="\lib\native\include\cli11\CLI11.hpp" />
+    <file src="include\CLI11.hpp" target="\lib\native\include\cli11\CLI11.hpp" />
     <file src="cli11.targets" target="\build\native\cli11.targets" />
   </files>
 </package>
