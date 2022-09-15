@@ -6,6 +6,9 @@ resources:
       name: cliutils/cli11
       ref: refs/tags/v2.2.0
 
+variables:
+- group: NuGet
+
 trigger:
 - main
 
@@ -47,4 +50,3 @@ steps:
       packagesToPack: '.\cli11.nuspec'
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
-
