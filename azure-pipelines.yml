@@ -37,7 +37,7 @@ steps:
     displayName: "Installing CLI11"
     inputs:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
-      cmakeArgs: '--installl "./BUILD"'
+      cmakeArgs: '--install "./BUILD"'
     
   - powershell: 'ls'
     displayName: "Check directories"
