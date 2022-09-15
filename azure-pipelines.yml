@@ -15,7 +15,6 @@ pool:
 steps:
   - checkout: self
     displayName: "Cloning build-nuget-cli11"
-    path: $(Pipeline.Workspace)
   - checkout: cli11
     displayName: "Cloning cli11"
 
@@ -38,13 +37,13 @@ steps:
     displayName: "Installing CLI11"
     inputs:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
-      cmakeArgs: '--install "./BUILD"'
+      cmakeArgs: '--install "./build-nuget-cli11"'
     
   - task: NuGetCommand@2
     displayName: "Packaging NuGet Pkg"
     inputs:
       command: 'pack'
-      packagesToPack: '.\cli11.nuspec'
+      packagesToPack: './build-nuget-cli11/cli11.nuspec'
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
 
@@ -55,6 +54,6 @@ steps:
   - task: NuGetCommand@2
     inputs:
       command: 'push'
-      packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      packagesToPush: '$(System.DefaultWorkingDirectory)/build-nuget-cli11/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
       nuGetFeedType: 'external'
       publishFeedCredentials: 'nuget'
