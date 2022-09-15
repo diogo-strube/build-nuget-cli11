@@ -47,3 +47,4 @@ steps:
       packagesToPack: '.\cli11.nuspec'
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
+
