@@ -50,5 +50,5 @@ steps:
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
       
-  - script: nuget push .\build-nuget-cli11 -src https://api.nuget.org/v3/index.json -ApiKey $(nuget-apikey)
+  - script: nuget push ./build-nuget-cli11/*.nupkg -src https://api.nuget.org/v3/index.json -ApiKey $(nuget-apikey)
     displayName: "Pushing NuGet Pkg"
