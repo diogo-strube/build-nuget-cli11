@@ -25,7 +25,7 @@ steps:
     displayName: "Making CLI11"
     inputs:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
-      cmakeArgs: '-DCMAKE_INSTALL_PREFIX="./INSTALL" -DCLI11_INSTALL=ON -DCLI11_SINGLE_FILE=ON -DCLI11_BUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -B "./BUILD" ./cli11' 
+      cmakeArgs: '-DCMAKE_INSTALL_PREFIX="./build-nuget-cli11/" -DCLI11_INSTALL=ON -DCLI11_SINGLE_FILE=ON -DCLI11_BUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -B "./BUILD" ./cli11' 
       
   - task: CMake@1
     displayName: "Building CLI11"
@@ -37,7 +37,7 @@ steps:
     displayName: "Installing CLI11"
     inputs:
       workingDirectory: '$(System.DefaultWorkingDirectory)'
-      cmakeArgs: '--install "./build-nuget-cli11"'
+      cmakeArgs: '--install "./BUILD"'
     
   - task: NuGetCommand@2
     displayName: "Packaging NuGet Pkg"
