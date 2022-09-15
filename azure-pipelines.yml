@@ -6,9 +6,6 @@ resources:
       name: cliutils/cli11
       ref: refs/tags/v2.2.0
 
-variables:
-- group: NuGet
-
 trigger:
 - main
 
@@ -50,3 +47,14 @@ steps:
       packagesToPack: '.\cli11.nuspec'
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
+
+  - task: NuGetAuthenticate@0
+    inputs:
+      nuGetServiceConnections: nuget
+      
+  - task: NuGetCommand@2
+    inputs:
+      command: 'push'
+      packagesToPush: '$(System.DefaultWorkingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      nuGetFeedType: 'external'
+      publishFeedCredentials: 'nuget'
