@@ -21,9 +21,6 @@ steps:
   - checkout: cli11
     displayName: "Cloning cli11"
 
-  - powershell: 'ls'
-    displayName: "Check directories"
-
   - task: CMake@1
     displayName: "Making CLI11"
     inputs:
@@ -50,5 +47,5 @@ steps:
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
       
-  - script: nuget push ./build-nuget-cli11/*.nupkg -src https://api.nuget.org/v3/index.json -ApiKey $(nuget-apikey)
+  - script: nuget push ./*.nupkg -src https://api.nuget.org/v3/index.json -ApiKey $(nuget-apikey)
     displayName: "Pushing NuGet Pkg"
