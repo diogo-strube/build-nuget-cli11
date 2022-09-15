@@ -6,6 +6,9 @@ resources:
       name: cliutils/cli11
       ref: refs/tags/v2.2.0
 
+variables:
+- group: NuGet
+
 trigger:
 - main
 
@@ -17,9 +20,6 @@ steps:
     displayName: "Cloning build-nuget-cli11"
   - checkout: cli11
     displayName: "Cloning cli11"
-
-  - powershell: 'ls'
-    displayName: "Check directories"
 
   - task: CMake@1
     displayName: "Making CLI11"
@@ -46,14 +46,6 @@ steps:
       packagesToPack: './build-nuget-cli11/cli11.nuspec'
       packDestination: '$(System.DefaultWorkingDirectory)'
       versioningScheme: 'off'
-
-  - task: NuGetAuthenticate@0
-    inputs:
-      nuGetServiceConnections: nuget
       
-  - task: NuGetCommand@2
-    inputs:
-      command: 'push'
-      packagesToPush: '$(System.DefaultWorkingDirectory)/build-nuget-cli11/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      nuGetFeedType: 'external'
-      publishFeedCredentials: 'nuget'
+  - script: nuget push ./*.nupkg -src https://api.nuget.org/v3/index.json -ApiKey $(nuget-apikey)
+    displayName: "Pushing NuGet Pkg"
